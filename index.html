@@ -325,6 +325,38 @@
                     We write LinkedIn posts for founders and executives to drive pipeline.
                   </p>
                   
+                  {/* Companies inline */}
+                  <div style={{margin: '3rem 0'}}>
+                    <h2 className="companies-title" style={{marginBottom: '2rem'}}>
+                      WE'VE WORKED WITH STARTUPS BACKED BY:
+                    </h2>
+                    
+                    <div style={{overflow: 'hidden', maxWidth: '800px', margin: '0 auto'}}>
+                      <div className="companies-track">
+                        {/* First set of logos */}
+                        {companies.map((company, i) => (
+                          <div key={i} className="company-logo-wrapper">
+                            <img 
+                              src={company.logo} 
+                              alt={company.name}
+                              loading="lazy"
+                            />
+                          </div>
+                        ))}
+                        {/* Duplicate for seamless loop */}
+                        {companies.map((company, i) => (
+                          <div key={`dup-${i}`} className="company-logo-wrapper">
+                            <img 
+                              src={company.logo} 
+                              alt={company.name}
+                              loading="lazy"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  
                   <a href="https://forms.fillout.com/t/dY45Ury3XMus" target="_blank" rel="noopener noreferrer" className="btn-primary">
                     Book a call
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -334,37 +366,7 @@
                 </div>
               </section>
 
-              {/* Companies Section */}
-              <section className="companies-section">
-                <h2 className="companies-title">
-                  WE'VE WORKED WITH STARTUPS BACKED BY:
-                </h2>
-                
-                <div style={{overflow: 'hidden'}}>
-                  <div className="companies-track">
-                    {/* First set of logos */}
-                    {companies.map((company, i) => (
-                      <div key={i} className="company-logo-wrapper">
-                        <img 
-                          src={company.logo} 
-                          alt={company.name}
-                          loading="lazy"
-                        />
-                      </div>
-                    ))}
-                    {/* Duplicate for seamless loop */}
-                    {companies.map((company, i) => (
-                      <div key={`dup-${i}`} className="company-logo-wrapper">
-                        <img 
-                          src={company.logo} 
-                          alt={company.name}
-                          loading="lazy"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </section>
+              {/* Companies Section - REMOVED, now inline above */}
 
               {/* Footer */}
               <footer className="site-footer">
