@@ -275,30 +275,32 @@
 
           return (
             <div className="min-h-screen bg-black text-white">
-              {/* Dark Header */}
-              <header className="bg-black border-b border-gray-800">
-                <div className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <span className="font-sans text-xl font-bold tracking-wide">Polarity Media</span>
-                  </div>
-                  
-                  <a href="https://forms.fillout.com/t/dY45Ury3XMus" target="_blank" className="px-6 py-2 border border-white text-white text-sm font-medium hover:bg-white hover:text-black transition">
+              {/* Header */}
+              <header className="site-header">
+                <div className="header-content">
+                  <a href="#" className="logo" style={{display: 'flex', alignItems: 'center', gap: '0.75rem'}}>
+                    <img src="Content/polaritymedia.png" alt="Polarity Media Logo" style={{width: '32px', height: '32px', objectFit: 'contain'}} />
+                    Polarity Media
+                  </a>
+                  <a href="https://forms.fillout.com/t/..." target="_blank" rel="noopener noreferrer" className="btn-secondary">
                     Get Started
                   </a>
                 </div>
               </header>
 
               {/* Hero */}
-              <div className="max-w-4xl mx-auto px-6 py-32 text-center">
+            <div className="max-w-4xl mx-auto px-6 py-32 text-center">
                 <h1 className="text-6xl lg:text-8xl font-bold leading-tight mb-8">
-                  LinkedIn content that drives pipeline
-                </h1>
+                    Turn plant wins into booked jobs
+            </h1>
+
+            <p className="text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-12">
+                We translate IIoT and MES outcomes into short LinkedIn posts that get local plant managers to reach out.
+            </p>
+        </div>
+
                 
-                <p className="text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-12">
-                  We write LinkedIn posts for founders and executives to drive pipeline.
-                </p>
-                
-                <a href="https://forms.fillout.com/t/dY45Ury3XMus" target="_blank" className="inline-flex items-center gap-2 bg-white text-black px-8 py-4 rounded-lg text-lg font-medium hover:bg-gray-100 transition">
+                <a href="https://forms.fillout.com/t/...." target="_blank" className="inline-flex items-center gap-2 bg-white text-black px-8 py-4 rounded-lg text-lg font-medium hover:bg-gray-100 transition">
                   Book a call →
                 </a>
               </div>
@@ -307,7 +309,7 @@
               <div className="py-16 bg-black">
                 <div className="text-center mb-8">
                   <h2 className="text-xl font-medium text-gray-300">
-                    The CEO has worked with executives at the following companies:
+                        The choice of executives at industry-defining companies
                   </h2>
                 </div>
                 
