@@ -1,206 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Polarity Media</title>
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700;800;900&family=Source+Serif+Pro:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
-        
-        body {
-          margin: 0;
-          padding: 0;
-          font-family: 'Inter', system-ui, sans-serif;
-          background: #000;
-          color: #fff;
-        }
-        
-        .site-header {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          z-index: 1000;
-          background: rgba(0, 0, 0, 0.95);
-          backdrop-filter: blur(10px);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .header-content {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 1.5rem 1.5rem;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-        
-        .logo {
-          font-size: 1.25rem;
-          font-weight: 700;
-          color: #fff;
-          text-decoration: none;
-          transition: opacity 0.3s;
-        }
-        
-        .logo:hover {
-          opacity: 0.8;
-        }
-        
-        .btn-secondary {
-          background: #fff;
-          color: #000;
-          padding: 0.75rem 1.5rem;
-          border-radius: 0.5rem;
-          text-decoration: none;
-          font-weight: 600;
-          transition: all 0.3s;
-        }
-        
-        .btn-secondary:hover {
-          background: #e5e5e5;
-          transform: translateY(-1px);
-        }
-        
-        .animate-scroll {
-          animation: scroll 30s linear infinite;
-        }
-        
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-        
-        .company-logo {
-          transition: all 0.3s ease;
-          filter: grayscale(100%) brightness(0.7);
-        }
-        
-        .company-logo:hover {
-          filter: grayscale(0%) brightness(1);
-          transform: scale(1.05);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Polarity Media</title>
+
+  <!-- React / Babel / Tailwind -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700;800;900&family=Source+Serif+Pro:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ========= Brand Palette ========= */
+    :root{
+      --pm-bg:   #000C23;   /* page background (navy) */
+      --pm-deep: #020C1E;   /* deepest surfaces */
+      --pm-primary: #06ABF8;/* electric blue */
+      --pm-mid:  #11659B;   /* secondary blue */
+      --pm-ink:  #06385E;   /* accents */
+      --pm-text: #FFFFFF;
+      --pm-text-dim: rgba(255,255,255,0.75);
+      --pm-border: rgba(6,171,248,0.18);
+    }
+
+    /* ========= Base ========= */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--pm-bg);
+      color: var(--pm-text);
+    }
+
+    /* ========= Header ========= */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(0, 12, 35, 0.92); /* brand navy with translucency */
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--pm-border);
+    }
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-decoration: none;
+      background: linear-gradient(90deg, var(--pm-primary), var(--pm-mid));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      transition: opacity .3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .logo:hover { opacity: .85; }
+
+    /* ========= Buttons ========= */
+    .btn-secondary {
+      background: linear-gradient(90deg, var(--pm-primary), var(--pm-mid));
+      color: #001328;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: filter .2s ease, transform .2s ease;
+    }
+    .btn-secondary:hover {
+      filter: brightness(1.06);
+      transform: translateY(-1px);
+    }
+
+    /* ========= Marquee ========= */
+    .animate-scroll {
+      animation: scroll 30s linear infinite;
+      will-change: transform;           /* smoother GPU compositing */
+    }
+    @keyframes scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .animate-scroll { animation: none; }
+    }
+
+    /* ========= Company Logos (smooth, no layout shift) ========= */
+    .company-logo {
+      transition: filter .2s ease, box-shadow .2s ease, transform .2s ease;
+    }
+    .company-logo img {
+      will-change: transform, filter;
+      transition: transform .18s ease-out, filter .18s ease-out;
+      filter: none;               /* full color while moving */
+      transform: translateZ(0);   /* nudge to GPU */
+    }
+    .company-logo:hover img,
+    .company-logo:focus-visible img {
+      transform: scale(1.05);
+      filter: saturate(1.25) brightness(1.06);
+    }
+    .company-logo:hover,
+    .company-logo:focus-visible {
+      box-shadow: 0 8px 24px rgba(6, 171, 248, 0.28);
+      outline: 2px solid rgba(6,171,248,0.28);
+      outline-offset: 0;
+    }
+
+    /* Helpers */
+    p, .muted { color: var(--pm-text-dim); }
+    .section-deep { background: var(--pm-deep); }
+    .border-brand { border-color: var(--pm-border); }
+  </style>
 </head>
 <body>
-    <div id="root"></div>
-    
-    <script type="text/babel">
-        const { useState, useEffect } = React;
+  <div id="root"></div>
 
-        function PolarityMediaSite() {
-          return (
-            <div className="min-h-screen bg-black text-white">
-              {/* Header */}
-              <header className="site-header">
-                <div className="header-content">
-                  <a href="#" className="logo" style={{display: 'flex', alignItems: 'center', gap: '0.75rem'}}>
-                    <img src="Content/polaritymedia.png" alt="Polarity Media Logo" style={{width: '32px', height: '32px', objectFit: 'contain'}} />
-                    Polarity Media
-                  </a>
-                  <a href="https://forms.fillout.com/t/..." target="_blank" rel="noopener noreferrer" className="btn-secondary">
-                    Get Started
-                  </a>
-                </div>
-              </header>
+  <script type="text/babel">
+    function PolarityMediaSite() {
+      return (
+        <>
+          {/* Header */}
+          <header className="site-header">
+            <div className="header-content">
+              <a href="#" className="logo">
+                <img src="Content/polaritymedia.png" alt="Polarity Media Logo" style={{width: '32px', height: '32px', objectFit: 'contain'}} />
+                Polarity Media
+              </a>
+              <a href="https://forms.fillout.com/t/..." target="_blank" rel="noopener noreferrer" className="btn-secondary">
+                Get Started
+              </a>
+            </div>
+          </header>
 
+          {/* Page Layout: make main > 100vh so footer is just below the fold */}
+          <div className="min-h-[108vh] sm:min-h-[112vh] flex flex-col">
+            <main className="flex-1">
               {/* Hero */}
-              <div style={{paddingTop: '120px'}}>
-                <div className="max-w-4xl mx-auto px-6 py-32 text-center">
-                  <h1 className="text-6xl lg:text-8xl font-bold leading-tight mb-8">
+              <div style={{ paddingTop: '120px' }}>
+                <div className="max-w-4xl mx-auto px-6 pt-32 pb-14 text-center">
+                  <h1 className="text-6xl lg:text-8xl font-bold leading-tight mb-8 text-transparent bg-clip-text"
+                      style={{ backgroundImage: 'linear-gradient(90deg, var(--pm-primary), var(--pm-mid))' }}>
                     Turn plant wins into booked jobs
                   </h1>
 
-                  <p className="text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-12">
+                  <p className="text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed mb-12">
                     We translate IIoT and MES outcomes into short LinkedIn posts that get local plant managers to reach out.
                   </p>
-                  
-                  <a href="https://forms.fillout.com/t/...." target="_blank" className="inline-flex items-center gap-2 bg-white text-black px-8 py-4 rounded-lg text-lg font-medium hover:bg-gray-100 transition">
+
+                  <a
+                    href="https://forms.fillout.com/t/...."
+                    target="_blank"
+                    className="btn-secondary inline-flex items-center gap-2"
+                  >
                     Book a call →
                   </a>
                 </div>
               </div>
 
-              {/* Moving Companies Section (bigger) */}
-<div className="py-24 md:py-28 bg-black">
-  <div className="mx-auto max-w-6xl px-4">
-    <div className="text-center mb-12">
-      <h2 className="text-2xl md:text-4xl font-semibold text-gray-200 tracking-tight">
-        The choice of executives at industry-defining companies
-      </h2>
-      <p className="mt-3 text-sm md:text-base text-gray-400">
-        Trusted by brands you know.
-      </p>
-    </div>
+              {/* Moving Companies Section (tight to hero) */}
+              <div className="-mt-2 md:-mt-4 pt-8 pb-16 section-deep">
+                <div className="text-center mb-6">
+                  <h2 className="text-xl font-medium" style={{ color: 'rgba(255,255,255,0.8)' }}>
+                    The choice of executives at industry-defining companies
+                  </h2>
+                </div>
 
-    <div className="overflow-hidden">
-      {/* Make the row taller & items larger */}
-      <div className="flex items-center animate-scroll gap-10 md:gap-14 will-change-transform" style={{ width: '200%' }}>
-        {[
-          {name: 'Advance Publications', logo: 'https://images.squarespace-cdn.com/content/v1/5cd2f9dbebfc7fd7777477a9/1557840692367-6XQ4KGXS8R5VXQ91E4TS/Advance_web_logo-13.jpg'},
-          {name: 'Advance Local', logo: 'https://www.advancelocal.com/wp-content/uploads/2019/01/AdvanceLocalLogo-linkedin.png'},
-          {name: 'Condé Nast', logo: 'https://variety.com/wp-content/uploads/2014/04/conde_nast_logo.jpg'},
-          {name: 'Vogue', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/VOGUE_LOGO.svg/1544px-VOGUE_LOGO.svg.png'},
-          {name: 'Reddit', logo: 'https://redditinc.com/hs-fs/hubfs/Reddit%20Inc/Content/Brand%20Page/Reddit_Logo.png'},
-          {name: 'Warner Bros', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Warner_Bros._Pictures_2023_%28Alt%29.svg/1200px-Warner_Bros._Pictures_2023_%28Alt%29.svg.png'},
-          {name: 'Turnitin', logo: 'https://www.turnitin.com/system/favicon/turnitin-tm-logo.png'},
-          // repeat for seamless loop
-          {name: 'Advance Publications', logo: 'https://images.squarespace-cdn.com/content/v1/5cd2f9dbebfc7fd7777477a9/1557840692367-6XQ4KGXS8R5VXQ91E4TS/Advance_web_logo-13.jpg'},
-          {name: 'Advance Local', logo: 'https://www.advancelocal.com/wp-content/uploads/2019/01/AdvanceLocalLogo-linkedin.png'},
-          {name: 'Condé Nast', logo: 'https://variety.com/wp-content/uploads/2014/04/conde_nast_logo.jpg'},
-          {name: 'Vogue', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/VOGUE_LOGO.svg/1544px-VOGUE_LOGO.svg.png'},
-          {name: 'Reddit', logo: 'https://redditinc.com/hs-fs/hubfs/Reddit%20Inc/Content/Brand%20Page/Reddit_Logo.png'},
-          {name: 'Warner Bros', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Warner_Bros._Pictures_2023_%28Alt%29.svg/1200px-Warner_Bros._Pictures_2023_%28Alt%29.svg.png'},
-          {name: 'Turnitin', logo: 'https://www.turnitin.com/system/favicon/turnitin-tm-logo.png'},
-        ].map((company, i) => (
-          <div key={i} className="flex-shrink-0">
-            {/* Bigger card + more padding */}
-            <div className="w-40 h-24 md:w-48 md:h-28 bg-white/95 rounded-2xl shadow-sm border border-gray-200 flex items-center justify-center p-5">
-              <img
-                src={company.logo}
-                alt={company.name}
-                className="max-h-10 md:max-h-12 object-contain"
-                /* avoid non-standard max-w-20; Tailwind doesn't ship that by default */
-              />
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </div>
-</div>
-
-
-              {/* Simple Footer */}
-              <footer className="bg-black border-t border-gray-600 py-8">
-                <div className="max-w-6xl mx-auto px-6">
-                  <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
-                    <div>
-                      © {new Date().getFullYear()} Polarity Media. All rights reserved.
-                    </div>
-                    <div className="flex items-center gap-6">
-                      <a href="#privacy" className="hover:text-white transition">Privacy Policy</a>
-                      <a href="#terms" className="hover:text-white transition">Terms of Service</a>
-                      <a href="mailto:ngd30@scarletmail.rutgers.edu" className="hover:text-white transition">Contact</a>
-                    </div>
+                <div className="overflow-hidden">
+                  <div
+                    className="flex animate-scroll gap-8 md:gap-10"
+                    style={{ width: '200%', willChange: 'transform' }}
+                  >
+                    {[
+                      {name: 'Advance Publications', logo: 'https://images.squarespace-cdn.com/content/v1/5cd2f9dbebfc7fd7777477a9/1557840692367-6XQ4KGXS8R5VXQ91E4TS/Advance_web_logo-13.jpg'},
+                      {name: 'Advance Local', logo: 'https://www.advancelocal.com/wp-content/uploads/2019/01/AdvanceLocalLogo-linkedin.png'},
+                      {name: 'Condé Nast', logo: 'https://variety.com/wp-content/uploads/2014/04/conde_nast_logo.jpg'},
+                      {name: 'Vogue', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/VOGUE_LOGO.svg/1544px-VOGUE_LOGO.svg.png'},
+                      {name: 'Reddit', logo: 'https://redditinc.com/hs-fs/hubfs/Reddit%20Inc/Content/Brand%20Page/Reddit_Logo.png'},
+                      {name: 'Warner Bros', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Warner_Bros._Pictures_2023_%28Alt%29.svg/1200px-Warner_Bros._Pictures_2023_%28Alt%29.svg.png'},
+                      {name: 'Turnitin', logo: 'https://www.turnitin.com/system/favicon/turnitin-tm-logo.png'},
+                      /* repeat to loop */
+                      {name: 'Advance Publications', logo: 'https://images.squarespace-cdn.com/content/v1/5cd2f9dbebfc7fd7777477a9/1557840692367-6XQ4KGXS8R5VXQ91E4TS/Advance_web_logo-13.jpg'},
+                      {name: 'Advance Local', logo: 'https://www.advancelocal.com/wp-content/uploads/2019/01/AdvanceLocalLogo-linkedin.png'},
+                      {name: 'Condé Nast', logo: 'https://variety.com/wp-content/uploads/2014/04/conde_nast_logo.jpg'},
+                      {name: 'Vogue', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/VOGUE_LOGO.svg/1544px-VOGUE_LOGO.svg.png'},
+                      {name: 'Reddit', logo: 'https://redditinc.com/hs-fs/hubfs/Reddit%20Inc/Content/Brand%20Page/Reddit_Logo.png'},
+                      {name: 'Warner Bros', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Warner_Bros._Pictures_2023_%28Alt%29.svg/1200px-Warner_Bros._Pictures_2023_%28Alt%29.svg.png'},
+                      {name: 'Turnitin', logo: 'https://www.turnitin.com/system/favicon/turnitin-tm-logo.png'},
+                    ].map((company, i) => (
+                      <div
+                        key={i}
+                        className="flex-shrink-0 mx-8 flex items-center justify-center"
+                        style={{ contain: 'paint' }}
+                      >
+                        <div className="w-40 h-24 bg-white rounded-lg shadow-sm border flex items-center justify-center p-5 company-logo"
+                             style={{ borderColor:'rgba(255,255,255,0.12)' }}>
+                          <img
+                            src={company.logo}
+                            alt={company.name}
+                            className="max-h-12 md:max-h-14 object-contain"
+                          />
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              </footer>
+              </div>
+            </main>
+          </div>
 
+          {/* Footer lives AFTER the min-h container so it's just below the fold */}
+          <footer
+            className="border-t py-8 text-gray-300"
+            style={{ background: 'var(--pm-deep)', borderColor: 'var(--pm-border)' }}
+          >
+            <div className="max-w-6xl mx-auto px-6">
+              <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
+                <div>© {new Date().getFullYear()} Polarity Media. All rights reserved.</div>
+                <div className="flex items-center gap-6">
+                  <a href="#privacy" className="transition hover:text-white">Privacy Policy</a>
+                  <a href="#terms" className="transition hover:text-white">Terms of Service</a>
+                  <a href="mailto:ngd30@scarletmail.rutgers.edu" className="transition hover:text-white">Contact</a>
+                </div>
+              </div>
             </div>
-          );
-        }
+          </footer>
+        </>
+      );
+    }
 
-        // Render the component
-        ReactDOM.render(<PolarityMediaSite />, document.getElementById('root'));
-    </script>
+    ReactDOM.createRoot(document.getElementById('root')).render(<PolarityMediaSite />);
+  </script>
 </body>
 </html>
