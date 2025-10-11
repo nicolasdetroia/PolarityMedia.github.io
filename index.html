@@ -11,166 +11,59 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700;800;900&family=Source+Serif+Pro:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
         
-        .font-serif { font-family: 'Playfair Display', 'Source Serif Pro', Georgia, serif; }
-        .font-sans { font-family: 'Inter', system-ui, sans-serif; }
-        .font-editorial { font-family: 'Source Serif Pro', Georgia, serif; }
-        
-        .navlink { 
-          font-size: 0.875rem; 
-          letter-spacing: 0.05em; 
-          text-transform: uppercase;
-          font-weight: 500;
-          padding: 0.75rem 0;
-          border-bottom: 1px solid transparent;
-          transition: all 0.3s ease;
-          position: relative;
-        }
-        .navlink:hover, .navlink.active { 
-          border-bottom-color: #000;
-          color: #000;
-        }
-        
-        html { 
-          scroll-behavior: smooth; 
-          font-size: 16px;
-        }
-        
         body {
-          line-height: 1.6;
-          color: #1a1a1a;
-        }
-        
-        .editorial-grid {
-          display: grid;
-          grid-template-columns: repeat(12, 1fr);
-          gap: 3rem;
-        }
-        
-        .fade-in {
-          animation: fadeIn 0.8s ease-out;
-        }
-        
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .dealroom-hero {
-          background: #000000;
-          color: #ffffff;
-        }
-        
-        .dealroom-section {
-          background: #000000;
-          color: #ffffff;
-          border-bottom: 1px solid #333333;
-        }
-        
-        .dealroom-card {
-          background: #000000;
-          border: 1px solid #333333;
-          transition: all 0.3s ease;
-        }
-        
-        .dealroom-card:hover {
-          border-color: #ffffff;
-        }
-        
-        .editorial-quote {
-          font-size: 1.5rem;
-          line-height: 1.4;
-          font-style: italic;
-          color: #4a4a4a;
-          border-left: 3px solid #000;
-          padding-left: 2rem;
-          margin: 2rem 0;
-        }
-        
-        .condenast-button {
+          margin: 0;
+          padding: 0;
+          font-family: 'Inter', system-ui, sans-serif;
           background: #000;
           color: #fff;
-          padding: 1rem 2rem;
-          border: none;
-          font-family: 'Inter', sans-serif;
-          font-weight: 500;
-          letter-spacing: 0.05em;
-          text-transform: uppercase;
-          font-size: 0.875rem;
-          transition: all 0.3s ease;
-          cursor: pointer;
         }
         
-        .condenast-button:hover {
-          background: #333;
-          transform: translateY(-1px);
+        .site-header {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 1000;
+          background: rgba(0, 0, 0, 0.95);
+          backdrop-filter: blur(10px);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        .condenast-button-outline {
-          background: transparent;
+        .header-content {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 1.5rem 1.5rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        
+        .logo {
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: #fff;
+          text-decoration: none;
+          transition: opacity 0.3s;
+        }
+        
+        .logo:hover {
+          opacity: 0.8;
+        }
+        
+        .btn-secondary {
+          background: #fff;
           color: #000;
-          border: 1px solid #000;
-          padding: 1rem 2rem;
-          font-family: 'Inter', sans-serif;
-          font-weight: 500;
-          letter-spacing: 0.05em;
-          text-transform: uppercase;
-          font-size: 0.875rem;
-          transition: all 0.3s ease;
-          cursor: pointer;
+          padding: 0.75rem 1.5rem;
+          border-radius: 0.5rem;
+          text-decoration: none;
+          font-weight: 600;
+          transition: all 0.3s;
         }
         
-        .condenast-button-outline:hover {
-          background: #000;
-          color: #fff;
-        }
-        
-        .editorial-heading {
-          font-size: clamp(2.5rem, 5vw, 4rem);
-          line-height: 1.1;
-          font-weight: 300;
-          letter-spacing: -0.02em;
-        }
-        
-        .editorial-subheading {
-          font-size: clamp(1.5rem, 3vw, 2.25rem);
-          line-height: 1.2;
-          font-weight: 400;
-          letter-spacing: -0.01em;
-        }
-        
-        .editorial-body {
-          font-size: 1.125rem;
-          line-height: 1.7;
-          color: #4a4a4a;
-        }
-        
-        .editorial-caption {
-          font-size: 0.875rem;
-          color: #8a8a8a;
-          text-transform: uppercase;
-          letter-spacing: 0.1em;
-          font-weight: 500;
-        }
-        
-        .premium-spacing {
-          padding: 6rem 0;
-        }
-        
-        .editorial-image {
-          background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%);
-          border: 1px solid #e5e5e5;
-        }
-        
-        .condenast-footer {
-          background: #1a1a1a;
-          color: #fff;
-          border-top: 1px solid #333;
-        }
-        
-        .editorial-divider {
-          height: 1px;
-          background: linear-gradient(90deg, transparent 0%, #e5e5e5 50%, transparent 100%);
-          margin: 4rem 0;
+        .btn-secondary:hover {
+          background: #e5e5e5;
+          transform: translateY(-1px);
         }
         
         .animate-scroll {
@@ -194,7 +87,6 @@
         .company-logo:hover {
           filter: grayscale(0%) brightness(1);
           transform: scale(1.05);
-          box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2);
         }
     </style>
 </head>
@@ -205,75 +97,7 @@
         const { useState, useEffect } = React;
 
         function PolarityMediaSite() {
-          const [menuOpen, setMenuOpen] = useState(false);
-          const [persona, setPersona] = useState("smb");
-          const [annual, setAnnual] = useState(false);
-          const [active, setActive] = useState("home");
-          const [openFAQ, setOpenFAQ] = useState(null);
-
-          useEffect(() => {
-            if (typeof window === 'undefined' || typeof IntersectionObserver === 'undefined') return;
-            const sections = document.querySelectorAll("section[id]");
-            const io = new IntersectionObserver(
-              (entries) => {
-                entries.forEach((e) => {
-                  if (e.isIntersecting) setActive(e.target.id);
-                });
-              },
-              { rootMargin: "-50% 0px -40% 0px", threshold: 0.01 }
-            );
-            sections.forEach((s) => io.observe(s));
-            return () => io.disconnect();
-          }, []);
-
-          const price = (base) => (annual ? Math.round(base * 10) : base);
-
-          const services =
-            persona === "infra"
-              ? [
-                  {
-                    title: "Editorial + Analyst Brief",
-                    desc: "Weekly executive brief on enterprise infrastructure: cloud, networking, security, data center & AI infra—written for decision‑makers.",
-                  },
-                  {
-                    title: "Vendor Index Pages",
-                    desc: "SEO landing pages and profiles for your B2B products with category positioning and buyer‑persona copy.",
-                  },
-                  {
-                    title: "Launch PR Lite (B2B)",
-                    desc: "Announcement page, media list, analyst angles and LinkedIn carousel set for GTM teams.",
-                  },
-                ]
-              : [
-                  { title: "Editorial Brand Kit", desc: "Voice, headlines, bio, storylines and a press‑ready one‑pager." },
-                  { title: "Social Content Studio", desc: "12 posts + 4 carousels + 4 reels/mo with hooks and CTAs. Scheduling included." },
-                  { title: "Launch PR Lite", desc: "Media list + pitch angles + founder Q&A + 1 announcement page on your site." },
-                ];
-
-          const faq = [
-            {
-              q: "What makes Polarity different from other content agencies?",
-              a: "We bring magazine-level editorial standards to brand storytelling. Our team has backgrounds in premium publishing, and we apply the same rigorous editorial process used by Condé Nast and Advance Local to every piece of content we create.",
-            },
-            {
-              q: "How do you ensure editorial quality?",
-              a: "Every piece of content goes through our editorial review process: concept development, strategic positioning, copy editing, and final approval. We maintain the same standards you'd expect from premium publications like Vogue or Vanity Fair.",
-            },
-            {
-              q: "What's your typical project timeline?",
-              a: "Timelines vary based on scope, but most editorial projects take 2-4 weeks from brief to final delivery. We work efficiently while maintaining our high standards, and we're transparent about timelines from the start.",
-            },
-            {
-              q: "Do you work with enterprise clients?",
-              a: "Yes. We work with both small businesses and enterprise clients, adapting our editorial approach to each client's needs. For enterprise clients, we focus on technical clarity and thought leadership positioning.",
-            },
-            {
-              q: "What's included in your editorial process?",
-              a: "Our process includes brand research, audience analysis, content strategy development, editorial creation, visual direction, and performance optimization. We handle everything from concept to final execution.",
-            },
-          ];
-
-          return 
+          return (
             <div className="min-h-screen bg-black text-white">
               {/* Header */}
               <header className="site-header">
@@ -282,81 +106,78 @@
                     <img src="Content/polaritymedia.png" alt="Polarity Media Logo" style={{width: '32px', height: '32px', objectFit: 'contain'}} />
                     Polarity Media
                   </a>
-                  <a href="https://forms.fillout.com/t/jxvscw3ax5us" target="_blank" rel="noopener noreferrer" className="btn-secondary">
+                  <a href="https://forms.fillout.com/t/..." target="_blank" rel="noopener noreferrer" className="btn-secondary">
                     Get Started
                   </a>
                 </div>
               </header>
 
               {/* Hero */}
-            <div className="max-w-4xl mx-auto px-6 py-32 text-center">
-                <h1 className="text-6xl lg:text-8xl font-bold leading-tight mb-8">
+              <div style={{paddingTop: '120px'}}>
+                <div className="max-w-4xl mx-auto px-6 py-32 text-center">
+                  <h1 className="text-6xl lg:text-8xl font-bold leading-tight mb-8">
                     Turn plant wins into booked jobs
-            </h1>
+                  </h1>
 
-            <p className="text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-12">
-                We translate IIoT and MES outcomes into short LinkedIn posts that get local plant managers to reach out.
-            </p>
-        </div>
-
-                
-                <a href="https://forms.fillout.com/t/jxvscw3ax5us" target="_blank" className="inline-flex items-center gap-2 bg-white text-black px-8 py-4 rounded-lg text-lg font-medium hover:bg-gray-100 transition">
-                  Book a call →
-                </a>
-              </div>
-
-              {/* Moving Companies Section */}
-              <div className="py-16 bg-black">
-                <div className="text-center mb-8">
-                  <h2 className="text-xl font-medium text-gray-300">
-                        The choice of executives at industry-defining companies
-                  </h2>
-                </div>
-                
-                <div className="overflow-hidden">
-                  <div className="flex animate-scroll">
-                    {[
-                      {name: 'Advance Publications', logo: 'https://images.squarespace-cdn.com/content/v1/5cd2f9dbebfc7fd7777477a9/1557840692367-6XQ4KGXS8R5VXQ91E4TS/Advance_web_logo-13.jpg'},
-                      {name: 'Advance Local', logo: 'https://www.advancelocal.com/wp-content/uploads/2019/01/AdvanceLocalLogo-linkedin.png'},
-                      {name: 'Condé Nast', logo: 'https://variety.com/wp-content/uploads/2014/04/conde_nast_logo.jpg'},
-                      {name: 'Vogue', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/VOGUE_LOGO.svg/1544px-VOGUE_LOGO.svg.png'},
-                      {name: 'Reddit', logo: 'https://redditinc.com/hs-fs/hubfs/Reddit%20Inc/Content/Brand%20Page/Reddit_Logo.png'},
-                      {name: 'Warner Bros', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Warner_Bros._Pictures_2023_%28Alt%29.svg/1200px-Warner_Bros._Pictures_2023_%28Alt%29.svg.png'},
-                      {name: 'Turnitin', logo: 'https://www.turnitin.com/system/favicon/turnitin-tm-logo.png'},
-                    ].map((company, i) => (
-                      <div key={i} className="flex-shrink-0 mx-8 flex items-center justify-center">
-                        <div className="w-24 h-16 bg-white rounded-lg shadow-sm border border-gray-200 flex items-center justify-center p-4 company-logo">
-                          <img 
-                            src={company.logo} 
-                            alt={company.name}
-                            className="max-h-8 max-w-20 object-contain"
-                          />
-                        </div>
-                      </div>
-                    ))}
-                    {/* Duplicate for seamless loop */}
-                    {[
-                      {name: 'Advance Publications', logo: 'https://images.squarespace-cdn.com/content/v1/5cd2f9dbebfc7fd7777477a9/1557840692367-6XQ4KGXS8R5VXQ91E4TS/Advance_web_logo-13.jpg'},
-                      {name: 'Advance Local', logo: 'https://www.advancelocal.com/wp-content/uploads/2019/01/AdvanceLocalLogo-linkedin.png'},
-                      {name: 'Condé Nast', logo: 'https://variety.com/wp-content/uploads/2014/04/conde_nast_logo.jpg'},
-                      {name: 'Vogue', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/VOGUE_LOGO.svg/1544px-VOGUE_LOGO.svg.png'},
-                      {name: 'Reddit', logo: 'https://redditinc.com/hs-fs/hubfs/Reddit%20Inc/Content/Brand%20Page/Reddit_Logo.png'},
-                      {name: 'Warner Bros', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Warner_Bros._Pictures_2023_%28Alt%29.svg/1200px-Warner_Bros._Pictures_2023_%28Alt%29.svg.png'},
-                      {name: 'Turnitin', logo: 'https://www.turnitin.com/system/favicon/turnitin-tm-logo.png'},
-                    ].map((company, i) => (
-                      <div key={`duplicate-${i}`} className="flex-shrink-0 mx-8 flex items-center justify-center">
-                        <div className="w-24 h-16 bg-white rounded-lg shadow-sm border border-gray-200 flex items-center justify-center p-4 company-logo">
-                          <img 
-                            src={company.logo} 
-                            alt={company.name}
-                            className="max-h-8 max-w-20 object-contain"
-                          />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                  <p className="text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-12">
+                    We translate IIoT and MES outcomes into short LinkedIn posts that get local plant managers to reach out.
+                  </p>
+                  
+                  <a href="https://forms.fillout.com/t/...." target="_blank" className="inline-flex items-center gap-2 bg-white text-black px-8 py-4 rounded-lg text-lg font-medium hover:bg-gray-100 transition">
+                    Book a call →
+                  </a>
                 </div>
               </div>
+
+              {/* Moving Companies Section (bigger) */}
+<div className="py-24 md:py-28 bg-black">
+  <div className="mx-auto max-w-6xl px-4">
+    <div className="text-center mb-12">
+      <h2 className="text-2xl md:text-4xl font-semibold text-gray-200 tracking-tight">
+        The choice of executives at industry-defining companies
+      </h2>
+      <p className="mt-3 text-sm md:text-base text-gray-400">
+        Trusted by brands you know.
+      </p>
+    </div>
+
+    <div className="overflow-hidden">
+      {/* Make the row taller & items larger */}
+      <div className="flex items-center animate-scroll gap-10 md:gap-14 will-change-transform" style={{ width: '200%' }}>
+        {[
+          {name: 'Advance Publications', logo: 'https://images.squarespace-cdn.com/content/v1/5cd2f9dbebfc7fd7777477a9/1557840692367-6XQ4KGXS8R5VXQ91E4TS/Advance_web_logo-13.jpg'},
+          {name: 'Advance Local', logo: 'https://www.advancelocal.com/wp-content/uploads/2019/01/AdvanceLocalLogo-linkedin.png'},
+          {name: 'Condé Nast', logo: 'https://variety.com/wp-content/uploads/2014/04/conde_nast_logo.jpg'},
+          {name: 'Vogue', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/VOGUE_LOGO.svg/1544px-VOGUE_LOGO.svg.png'},
+          {name: 'Reddit', logo: 'https://redditinc.com/hs-fs/hubfs/Reddit%20Inc/Content/Brand%20Page/Reddit_Logo.png'},
+          {name: 'Warner Bros', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Warner_Bros._Pictures_2023_%28Alt%29.svg/1200px-Warner_Bros._Pictures_2023_%28Alt%29.svg.png'},
+          {name: 'Turnitin', logo: 'https://www.turnitin.com/system/favicon/turnitin-tm-logo.png'},
+          // repeat for seamless loop
+          {name: 'Advance Publications', logo: 'https://images.squarespace-cdn.com/content/v1/5cd2f9dbebfc7fd7777477a9/1557840692367-6XQ4KGXS8R5VXQ91E4TS/Advance_web_logo-13.jpg'},
+          {name: 'Advance Local', logo: 'https://www.advancelocal.com/wp-content/uploads/2019/01/AdvanceLocalLogo-linkedin.png'},
+          {name: 'Condé Nast', logo: 'https://variety.com/wp-content/uploads/2014/04/conde_nast_logo.jpg'},
+          {name: 'Vogue', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/VOGUE_LOGO.svg/1544px-VOGUE_LOGO.svg.png'},
+          {name: 'Reddit', logo: 'https://redditinc.com/hs-fs/hubfs/Reddit%20Inc/Content/Brand%20Page/Reddit_Logo.png'},
+          {name: 'Warner Bros', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Warner_Bros._Pictures_2023_%28Alt%29.svg/1200px-Warner_Bros._Pictures_2023_%28Alt%29.svg.png'},
+          {name: 'Turnitin', logo: 'https://www.turnitin.com/system/favicon/turnitin-tm-logo.png'},
+        ].map((company, i) => (
+          <div key={i} className="flex-shrink-0">
+            {/* Bigger card + more padding */}
+            <div className="w-40 h-24 md:w-48 md:h-28 bg-white/95 rounded-2xl shadow-sm border border-gray-200 flex items-center justify-center p-5">
+              <img
+                src={company.logo}
+                alt={company.name}
+                className="max-h-10 md:max-h-12 object-contain"
+                /* avoid non-standard max-w-20; Tailwind doesn't ship that by default */
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
+
 
               {/* Simple Footer */}
               <footer className="bg-black border-t border-gray-600 py-8">
@@ -373,6 +194,9 @@
                   </div>
                 </div>
               </footer>
+
+            </div>
+          );
         }
 
         // Render the component
